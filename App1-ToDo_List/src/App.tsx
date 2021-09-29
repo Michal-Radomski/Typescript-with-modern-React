@@ -17,24 +17,27 @@ function App() {
     setValue("");
   };
 
+// Add doDo to the list
   const addToDo = (text: string): void => {
     const newTodos: ToDo[] = [...todos, {text, complete: false}];
     setTodos(newTodos);
   };
 
+// Set status to Complete
   const completeToDo = (index: number): void => {
     const newTodos: ToDo[] = [...todos];
     newTodos[index].complete = !newTodos[index].complete;
     setTodos(newTodos);
   };
 
+// Remove toDo from the list
   const removeTodo = (index: number): void => {
     const newTodos: ToDo[] = [...todos];
     newTodos.splice(index, 1);
     setTodos(newTodos);
   };
 
-  console.log(todos);
+//  console.log(todos);
   // debugger;
 
   return (
