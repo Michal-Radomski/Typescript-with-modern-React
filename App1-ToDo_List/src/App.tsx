@@ -1,20 +1,17 @@
-import logo from "./logo.svg";
-import "./App.css";
+import React from "react";
+import TestComponent from "./TestComponent";
 
 function App() {
   function sum(a: number, b: number): number {
     return a + b;
   }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        {sum(2, 15)}
-      </header>
-    </div>
+    <React.Fragment>
+      <p>Hello TypeScript!</p>
+      <p>TSX Component</p>
+      <p>Sum function: sum 2+15: {sum(2, 15)}</p>
+      <TestComponent />
+    </React.Fragment>
   );
 }
 
