@@ -17,3 +17,9 @@ export interface Episode {
   number: number;
   season: number;
 }
+
+export interface EpisodeProps {
+  episodes: Array<Episode>;
+  toggleFavAction: (episode: Episode) => Action;
+  favourites: Array<Episode>;
+}
