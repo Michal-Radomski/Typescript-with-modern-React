@@ -52,10 +52,10 @@ function App() {
           return (
             <div style={{backgroundColor: "whiteSmoke"}} key={index}>
               <div style={{textDecoration: todo.complete ? "line-through" : "underLine"}}>{todo.text}</div>
-              <button type="button" onClick={(): void => completeToDo(index)}>
+              <button type="button" onClick={(): void => completeToDo(index)}>                           // -": void" nie jest konieczne tu
                 {todo.complete ? "Incomplete" : "Complete"}
               </button>
-              <button type="button" onClick={(): void => removeTodo(index)}>
+              <button type="button" onClick={(): void => removeTodo(index)}>                            // -": void" nie jest konieczne tu
                 Remove
               </button>
               <hr />
