@@ -1,13 +1,15 @@
 // All the Interfaces
 
+export type Dispatch = React.Dispatch<Action>;
+
 export interface State {
   episodes: Array<Episode>;
-  favourites: Array<any>;
+  favourites: Array<Episode>;
 }
 
 export interface Action {
   type: string;
-  payload: any;
+  payload: Array<Episode> | any;
 }
 
 export interface Episode {
@@ -20,6 +22,7 @@ export interface Episode {
 
 export interface EpisodeProps {
   episodes: Array<Episode>;
-  toggleFavAction: (episode: Episode) => Action;
+  store: {state: State; dispatch: Dispatch};
+  toggleFavAction: (state: State, episode: Episode, dispatch: Dispatch) => Action;
   favourites: Array<Episode>;
 }
