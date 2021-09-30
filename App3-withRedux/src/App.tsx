@@ -19,19 +19,32 @@ const App = (): JSX.Element => {
     });
   };
 
-  const toggleFavAction = (episode: Episode): Action =>
-    dispatch({
+  const toggleFavAction = (episode: Episode): Action => {
+    const episodeInFav = state.favourites.includes(episode);
+    let dispatchObj = {
       type: "ADD_FAV",
       payload: episode,
-    });
+    };
+    if (episodeInFav) {
+      const favWithoutEpisode = state.favourites.filter((fav: Episode) => fav.id !== episode.id);
+      dispatchObj = {
+        type: "REMOVE_FAV",
+        payload: favWithoutEpisode,
+      };
+    }
+    return dispatch(dispatchObj);
+  };
 
-  console.log(state);
+  // console.log(state);
 
   return (
     <React.Fragment>
       <header className="header">
-        <h1>Rick and Morty</h1>
-        <p>Pick your favourite episode</p>
+        <div>
+          <h1>Rick and Morty</h1>
+          <p>Pick your favourite episode</p>
+        </div>
+        <div>Favourite(s): {state.favourites.length}</div>
       </header>
       <section className="episode-layout">
         {state.episodes.map((episode: Episode) => {
@@ -43,7 +56,7 @@ const App = (): JSX.Element => {
                 <div>
                   Season: {episode.season} Number:{episode.number}
                   <button type="button" onClick={() => toggleFavAction(episode)}>
-                    Favourite
+                    {state.favourites.find((fav: Episode) => fav.id === episode.id) ? "Unfavourite" : "Favourite"}
                   </button>
                 </div>
               </section>
