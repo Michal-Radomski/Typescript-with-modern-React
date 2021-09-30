@@ -1,14 +1,5 @@
 import React from "react";
-
-interface State {
-  episodes: [];
-  favourites: [];
-}
-
-interface Action {
-  type: string;
-  payload: any;
-}
+import {Action, State} from "./Interfaces";
 
 const initialState: State = {
   episodes: [],
@@ -21,10 +12,11 @@ function reducer(state: State, action: Action): State {
   switch (action.type) {
     case "FETCH_DATA":
       return {...state, episodes: action.payload};
+    case "ADD_FAV":
+      return {...state, favourites: [...state.favourites, action.payload]};
     default:
       return state;
   }
-  //pass
 }
 
 export function StoreProvider(props: any): JSX.Element {
